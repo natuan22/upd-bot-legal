@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Luật PD Thành phố Louge Town</title>
+    <style>
+      :root {
+        --bg: #0b1120;
+        --panel: #121b2d;
+        --panel2: #172338;
+        --line: #293851;
+        --text: #e8eef8;
+        --muted: #9fb0c8;
+        --accent: #f59e0b;
+        --blue: #60a5fa;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: radial-gradient(ellipse at top, #182742 0, #0b1120 52%);
+        color: var(--text);
+        font: 15px/1.7 system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+
+      header {
+        padding: 42px 20px 30px;
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(135deg, #101a2d, #172b45);
+      }
+
+      .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .eyebrow {
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #fbbf24;
+        font-weight: 800;
+      }
+
+      h1 {
+        margin: 8px 0 6px;
+        font-size: clamp(28px, 4vw, 42px);
+        line-height: 1.2;
+      }
+
+      .subtitle {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(11, 17, 32, 0.94);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--line);
+        padding: 12px 20px;
+      }
+
+      .toolbar-inner {
+        max-width: 1100px;
+        margin: auto;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      input[type="search"] {
+        flex: 1;
+        min-width: 220px;
+        background: #101a2b;
+        border: 1px solid #344761;
+        color: var(--text);
+        border-radius: 12px;
+        padding: 13px 15px;
+        font: inherit;
+        outline: none;
+      }
+
+      input[type="search"]:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px #f59e0b22;
+      }
+
+      button {
+        font: inherit;
+        cursor: pointer;
+      }
+
+      .action {
+        border: 1px solid #344761;
+        background: #172338;
+        color: var(--text);
+        border-radius: 10px;
+        padding: 10px 14px;
+      }
+
+      .action:hover {
+        border-color: var(--accent);
+      }
+
+      main {
+        max-width: 1100px;
+        margin: 24px auto;
+        padding: 0 20px 60px;
+        display: grid;
+        grid-template-columns: 250px minmax(0, 1fr);
+        gap: 22px;
+        align-items: start;
+      }
+
+      nav {
+        position: sticky;
+        top: 82px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 14px;
+        max-height: calc(100vh - 105px);
+        overflow: auto;
+      }
+
+      nav h2 {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        margin: 4px 8px 10px;
+      }
+
+      nav a {
+        display: block;
+        color: #c9d6e8;
+        text-decoration: none;
+        padding: 8px 10px;
+        border-radius: 8px;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      nav a:hover {
+        background: var(--panel2);
+        color: #fff;
+      }
+
+      .content {
+        min-width: 0;
+      }
+
+      .notice {
+        background: #201e18;
+        border: 1px solid #6b4b19;
+        border-left: 4px solid var(--accent);
+        border-radius: 12px;
+        padding: 15px 17px;
+        margin-bottom: 16px;
+        color: #f7e7c5;
+      }
+
+      .law-section {
+        background: rgba(18, 27, 45, 0.94);
+        border: 1px solid var(--line);
+        border-radius: 15px;
+        overflow: hidden;
+        margin-bottom: 14px;
+        scroll-margin-top: 82px;
+      }
+
+      .section-toggle {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        text-align: left;
+        border: 0;
+        background: linear-gradient(90deg, #18263d, #131f32);
+        color: var(--text);
+        padding: 16px 18px;
+        font-weight: 800;
+        font-size: 16px;
+      }
+
+      .section-toggle:hover {
+        background: #1d304b;
+      }
+
+      .section-title {
+        overflow-wrap: anywhere;
+      }
+
+      .chevron {
+        color: var(--accent);
+        font-size: 20px;
+        flex-shrink: 0;
+      }
+
+      .section-content {
+        padding: 12px 18px 18px;
+      }
+
+      .section-content p {
+        margin: 7px 0;
+        overflow-wrap: anywhere;
+      }
+
+      .section-content .law-line {
+        padding-left: 10px;
+        border-left: 2px solid #314966;
+      }
+
+      .section-content .table-label {
+        display: inline-block;
+        background: #233650;
+        color: #dceaff;
+        border-radius: 6px;
+        padding: 4px 8px;
+        margin: 5px 5px 5px 0;
+        font-weight: 700;
+      }
+
+      .source-divider {
+        border: 0;
+        border-top: 1px solid var(--line);
+        margin: 14px 0;
+      }
+
+      mark {
+        background: #facc15;
+        color: #201a05;
+        border-radius: 3px;
+        padding: 0 2px;
+      }
+
+      .empty {
+        display: none;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 20px;
+        color: var(--muted);
+      }
+
+      footer {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px 30px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      @media (max-width: 800px) {
+        main {
+          grid-template-columns: 1fr;
+        }
+
+        nav {
+          position: static;
+          max-height: none;
+        }
+
+        nav .nav-links {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+          gap: 3px;
+        }
+      }
+
+      @media print {
+        body {
+          background: white;
+          color: #111;
+        }
+
+        header,
+        .toolbar {
+          position: static;
+          background: white;
+          color: #111;
+        }
+
+        nav,
+        .toolbar,
+        .chevron {
+          display: none !important;
+        }
+
+        main {
+          display: block;
+          max-width: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        .law-section {
+          break-inside: avoid;
+          background: white;
+          color: #111;
+          border: 1px solid #bbb;
+        }
+
+        .section-toggle {
+          background: #eee;
+          color: #111;
+        }
+
+        .section-content {
+          display: block !important;
+        }
+
+        .notice {
+          background: white;
+          color: #111;
+        }
+
+        footer {
+          color: #333;
+        }
+      }
+
+      .law-note {
+        margin-top: 18px;
+        padding: 13px 16px;
+        border-left: 3px solid #f59e0b;
+        background: rgba(245, 158, 11, 0.08);
+        border-radius: 8px;
+        color: #f5dfb0;
+      }
+
+      .law-note strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .law-note p {
+        margin: 0;
+      }
+
+      @media print {
+        .law-note {
+          color: #111;
+          background: #fff8e8;
+        }
+      }
+
+      .table-wrap {
+        width: 100%;
+        /* overflow-x: auto; */
+        margin: 12px 0 16px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+      }
+
+      .fine-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 480px;
+        background: #101a2b;
+      }
+
+      .fine-table th,
+      .fine-table td {
+        padding: 11px 13px;
+        text-align: left;
+        vertical-align: top;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .fine-table th {
+        background: #233650;
+        color: #f4f7fb;
+        font-weight: 800;
+        position: sticky;
+        top: 65px;
+      }
+
+      .fine-table td:first-child {
+        width: 58%;
+      }
+
+      .fine-table tbody tr:nth-child(even) {
+        background: #142136;
+      }
+
+      .fine-table tbody tr:hover {
+        background: #20324b;
+      }
+
+      .fine-table tbody tr:last-child td {
+        border-bottom: 0;
+      }
+
+      @media (max-width: 600px) {
+        .fine-table {
+          min-width: 420px;
+        }
+
+        .fine-table th,
+        .fine-table td {
+          padding: 9px 10px;
+          font-size: 13px;
+        }
+      }
+
+      @media print {
+        .table-wrap {
+          overflow: visible;
+          border-color: #aaa;
+        }
+
+        .fine-table {
+          background: white;
+          color: #111;
+          min-width: 0;
+        }
+
+        .fine-table th {
+          position: static;
+          background: #eee;
+          color: #111;
+        }
+
+        .fine-table tbody tr:nth-child(even) {
+          background: #f7f7f7;
+        }
+
+        .fine-table th,
+        .fine-table td {
+          border-bottom: 1px solid #ccc;
+        }
+      }
+
+      .criminal-table {
+        min-width: 680px;
+      }
+
+      .criminal-table th:nth-child(1),
+      .criminal-table td:nth-child(1) {
+        width: 54%;
+      }
+
+      .criminal-table th:nth-child(2),
+      .criminal-table td:nth-child(2) {
+        width: 23%;
+      }
+
+      .criminal-table th:nth-child(3),
+      .criminal-table td:nth-child(3) {
+        width: 23%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="wrap">
+        <div class="eyebrow">Louis Police Department · Louge Town</div>
+        <h1>📜 Luật PD Thành phố Louge Town</h1>
+        <p class="subtitle">
+          Bộ nội quy &amp; quy định thành phố · Tra cứu nhanh các nhóm luật
+        </p>
+      </div>
+    </header>
+    <div class="toolbar">
+      <div class="toolbar-inner">
+        <input
+          aria-label="Tìm kiếm luật"
+          id="search"
+          placeholder="Tìm điều luật, hành vi, mức phạt..."
+          type="search"
+        />
+        <button class="action" id="expandAll" type="button">Mở tất cả</button>
+        <button class="action" id="collapseAll" type="button">Thu gọn</button>
+        <button class="action" id="print" type="button">In / Lưu PDF</button>
+      </div>
+    </div>
+    <main>
+      <nav>
+        <h2>Danh mục</h2>
+        <div class="nav-links">
+          <a href="#section-0">Giới thiệu &amp; thông báo chung</a
+          ><a href="#section-1">🟦 NHÓM #1 — QUY ĐỊNH ĐỐI VỚI CƯ DÂN</a
+          ><a href="#section-2">🟨 NHÓM #2 — LUẬT TRUY ĐUỔI</a
+          ><a href="#section-3">🟥 NHÓM #3 — LUẬT HÀNH CHÍNH</a
+          ><a href="#section-4">🟪 NHÓM #4 — LUẬT HÌNH SỰ</a
+          ><a href="#section-5">🟫 NHÓM #5 — LUẬT TÀNG TRỮ</a
+          ><a href="#section-6">🟩 NHÓM #6 — QUY ĐỊNH DÀNH CHO CẢNH SÁT</a
+          ><a href="#section-7">🏢 NHÓM #7 — QUY ĐỊNH ĐỐI VỚI DOANH NGHIỆP</a
+          ><a href="#section-8">🧰 NHÓM #8 — TRANG BỊ BAN NGÀNH</a
+          ><a href="#section-9">⚔️ NHÓM #9 — LUẬT CHỐNG TRẢ CẢNH SÁT</a
+          ><a href="#section-10"
+            >🔥 NHÓM #10 — LUẬT CAN THIỆP VÀ TRẤN ÁP BẠO LỰC</a
+          ><a href="#section-11"
+            >⌚ NHÓM #11 — LUẬT CƯỚP ĐỒNG HỒ, TRỘM BIỂN BÁO</a
+          ><a href="#section-12">📌 QUY ĐỊNH CUỐI CÙNG</a>
+        </div>
+      </nav>
+      <div class="content">
+        <div class="notice">
+          <strong>Thông báo chung</strong><br />Nhằm duy trì trật tự, đảm bảo
+          tính công bằng và nâng cao chất lượng Roleplay (RP), toàn thể cư dân
+          và lực lượng chức năng có trách nhiệm đọc, hiểu và nghiêm túc chấp
+          hành quy định. Nội dung điều luật bên dưới được chuyển từ văn bản
+          người dùng cung cấp.
+        </div>
+        <div class="empty" id="empty">Không tìm thấy nội dung phù hợp.</div>
+        <section
+          class="law-section"
+          data-title="giới thiệu &amp; thông báo chung"
+          id="section-0"
+        >
+          <button aria-expanded="true" class="section-toggle" type="button">
+            <span class="section-title">Giới thiệu &amp; thông báo chung</span
+            ><span class="chevron">−</span>
+          </button>
+          <div class="section-content">
+            <p>LUẬT PD THÀNH PHỐ LOUGE TOWN📜</p>
+            <p>📜 BỘ NỘI QUY &amp; QUY ĐỊNH THÀNH PHỐ LOUGE TOWN</p>
+            <p>🚔 LOUIS POLICE DEPARTMENT (LSPD)</p>
+            <p>📢 THÔNG BÁO CHUNG</p>
+            <p>
+              Nhằm duy trì trật tự, đảm bảo tính công bằng và nâng cao chất
+              lượng Roleplay (RP) tại thành phố Louge Town, toàn thể cư dân và
+              lực lượng chức năng có trách nhiệm đọc, hiểu và nghiêm túc chấp
+              hành các quy định dưới đây.
+            </p>
+            <p class="law-line">⚠️ Lưu ý:</p>
+            <p>
+              Không được lấy lý do không biết luật để biện minh cho hành vi vi
+              phạm.
+            </p>
+            <p>
+              Mọi hành vi cố tình lợi dụng kẽ hở của luật, phá RP hoặc gian dối
+              trong quá trình xử lý đều có thể bị xem xét tăng nặng hình phạt.
+            </p>
+            <p>
+              Cảnh sát phải thực hiện đúng quy trình nghiệp vụ, không lạm quyền
+              và không xử lý tùy tiện.
+            </p>
+            <p>
+              Các trường hợp chưa được quy định cụ thể sẽ được xem xét dựa trên
+              tình huống thực tế và quyết định của cấp quản lý có thẩm quyền.
+            </p>
+            <hr class="source-divider" />
+          </div>
+        </section>
+        <section
+          class="law-section"
+          data-title="🟦 nhóm #1 — quy định đối với cư dân"
+          id="section-1"
+        >
+          <button aria-expanded="true" class="section-toggle" type="button">
+            <span class="section-title"
+              >🟦 NHÓM #1 — QUY ĐỊNH ĐỐI VỚI CƯ DÂN</span
+            ><span class="chevron">−</span>
+          </button>
+          <div class="section-content">
+            <p class="law-line">🪪 1. Giấy tờ tùy thân và phương tiện</p>
+            <p>Công dân phải mang theo CCCD khi ra đường.</p>
+            <p>Người điều khiển phương tiện phải có bằng lái phù hợp.</p>
+            <p>
+              Khi Cảnh sát yêu cầu kiểm tra hợp lệ, công dân có trách nhiệm hợp
+              tác và xuất trình giấy tờ liên quan.
+            </p>
+            <p class="law-line">⚖️ 2. Quyền tố cáo và phản ánh</p>
+            <p>
+              Cư dân có quyền tố cáo Cảnh sát hoặc Bác sĩ khi phát hiện hành vi
+              sai phạm.
+            </p>
+            <p>Điều kiện tiếp nhận:</p>
+            <p>📹 Có bằng chứng cụ thể như video, hình ảnh hoặc nhân chứng.</p>
+            <p>
+              🏢 Đến đồn Cảnh sát để nộp bằng chứng và làm việc với người có
+              thẩm quyền.
+            </p>
+            <p>
+              🤝 Nhân chứng được phép hỗ trợ xác minh, nhưng phải giữ thái độ
+              lịch sự và tôn trọng trong quá trình làm việc.
+            </p>
+            <p class="law-line">👮 3. Quyền hạn của Cảnh sát</p>
+            <p>Cảnh sát được phép:</p>
+            <p>
+              Giải tán đám đông gây mất trật tự tại đồn Cảnh sát, bệnh viện và
+              các khu vực công cộng.
+            </p>
+            <p>
+              Kiểm tra hành chính khi có dấu hiệu khả nghi hoặc vi phạm quy
+              định.
+            </p>
+            <p>
+              Kiểm tra cơ sở kinh doanh khi có thông báo chính thức từ LSPD.
+            </p>
+            <p>
+              Yêu cầu tạm dừng hoạt động để phục vụ công tác kiểm tra, điều tra.
+            </p>
+            <p>
+              Yêu cầu giữ trật tự tại hiện trường; nếu cố tình vi phạm sau 2 lần
+              nhắc nhở, có thể xử lý theo quy định về cản trở người thi hành
+              công vụ.
+            </p>
+            <p>🚫 4. Các hành vi bị nghiêm cấm</p>
+            <p>Che kín khuôn mặt trái quy định.</p>
+            <p>Kích động, gây giao tranh hoặc cố tình gây mất trật tự.</p>
+            <p>Cản trở quá trình xử lý vụ việc của lực lượng chức năng.</p>
+            <p>
+              Mức phạt gây rối trật tự công cộng: 10.000–30.000$ + 15–20 phút tù
+              liên bang.
+            </p>
+            <p class="law-line">🚨 5. Quy định giao thông</p>
+            <p>
+              Khi Cảnh sát bật đèn ưu tiên và còi báo hiệu, cư dân phải chủ động
+              nhường đường, chấp hành hiệu lệnh và không cố tình cản trở phương
+              tiện đang làm nhiệm vụ.
+            </p>
+            <p class="law-line">🔒 6. Quy định tại hiện trường và phòng giam</p>
+            <p>
+              Người không liên quan phải giữ trật tự khi Cảnh sát đang bắt giữ
+              hoặc điều tra.
+            </p>
+            <p>
+              Cố tình gây rối sau 2 lần nhắc nhở có thể bị khống chế và xử lý
+              theo luật.
+            </p>
+            <p>
+              Các biện pháp nghiệp vụ phải phù hợp với tình huống và quy định
+              của thành phố.
+            </p>
+            <p>📄 7. Quy định thủ tục</p>
+            <p>
+              Khi làm việc tại cơ quan chức năng khác, nhân viên nhà nước phải
+              xuất trình giấy tờ nghề nghiệp khi được yêu cầu hợp lệ.
+            </p>
+            <p>
+              Việc xác minh vi phạm phải dựa trên bằng chứng, nhân chứng hoặc
+              căn cứ được luật thành phố công nhận.
+            </p>
+            <p>
+              Khi nhận được giấy triệu tập hợp lệ từ LSPD, cư dân phải đến làm
+              việc theo yêu cầu.
+            </p>
+            <p class="law-line">⛓️ 8. Quy định khi bị bắt</p>
+            <p>
+              Khi đã bị còng tay, không được sử dụng điện thoại hoặc đàm thoại
+              trái quy định.
+            </p>
+            <p>Lần 1: Phạt 100 phút tù liên bang (IC).</p>
+            <p>Lần 2: Xử lý theo luật OOC của thành phố.</p>
+            <p class="law-line">💻 9. Xử lý tình huống đặc biệt</p>
+            <p>
+              Nếu có việc khẩn cấp ngoài đời thực, hãy thông báo cho người đang
+              xử lý tình huống để được hỗ trợ kết thúc hợp lý.
+            </p>
+            <p>
+              Nếu gặp lỗi crash game, hãy liên hệ Cảnh sát qua Discord và quay
+              lại đồn trình diện sau khi đăng nhập lại để tiếp tục tình huống.
+            </p>
+            <hr class="source-divider" />
+          </div>
+        </section>
+        <section
+          class="law-section"
+          data-title="🟨 nhóm #2 — luật truy đuổi"
+          id="section-2"
+        >
+          <button aria-expanded="true" class="section-toggle" type="button">
+            <span class="section-title">🟨 NHÓM #2 — LUẬT TRUY ĐUỔI</span
+            ><span class="chevron">−</span>
+          </button>
+          <div class="section-content">
+            <p class="law-line">🚨 1. Quy định cấp độ còi</p>
+            <p class="law-line">🔵 Còi 1 — 2 phút</p>
+            <p>Cảnh sát được phép theo dấu đối tượng.</p>
+            <p>
+              Không được setup hoặc chặn trước đường tẩu thoát theo quy định còi
+              1.
+            </p>
+            <p class="law-line">🟠 Còi 2 — 2 phút</p>
+            <p>
+              Được phép setup chặn đường, chặn hướng di chuyển của đối tượng
+              theo luật.
+            </p>
+            <p>
+              Nếu phương tiện đối tượng bị mắc kẹt, Cảnh sát được phép kiểm soát
+              đường thoát.
+            </p>
+            <p class="law-line">🔴 Còi 3 — 1 phút</p>
+            <p>
+              Được phép thực hiện PIT, chèn ép và khóa phương tiện theo quy
+              định.
+            </p>
+            <p>
+              Sau khi đủ 1 phút kể từ thời điểm bật còi 3, Cảnh sát được phép
+              tiến hành triệt hạ phương tiện theo luật.
+            </p>
+            <p class="law-line">
+              ⚠️ Thời gian và quyền hạn truy đuổi của từng phó bản được áp dụng
+              theo quy định riêng nếu có.
+            </p>
+            <p class="law-line">🚗 2. Quy định triệt hạ</p>
+            <p>
+              Triệt hạ là việc sử dụng các biện pháp nghiệp vụ hợp lệ nhằm ngăn
+              phương tiện đối tượng tiếp tục di chuyển, bao gồm:
+            </p>
+            <p>Chèn xe hoặc ép xe theo quy định.</p>
+            <p>Khống chế phương tiện khi đủ điều kiện.</p>
+            <p>
+              Bắn lốp hoặc sử dụng biện pháp chuyên dụng trong các trường hợp
+              được luật cho phép.
+            </p>
+            <p>
+              Khống chế phương tiện đường thủy khi đối tượng dùng thuyền để bỏ
+              trốn, theo quy định liên quan.
+            </p>
+            <p>
+              Không được cố tình va chạm sai luật hoặc lạm dụng quyền triệt hạ
+              khi chưa đủ điều kiện.
+            </p>
+            <p class="law-line">🌊 3. Tình huống truy đuổi dưới nước</p>
+            <p>
+              Cảnh sát được phép sử dụng thuyền hoặc trực thăng AIR1 để truy
+              vết, hỗ trợ truy đuổi.
+            </p>
+            <p>
+              Khi tiếp cận đối tượng dưới nước, Cảnh sát được phép khống chế
+              trực tiếp theo quy định.
+            </p>
+            <p>
+              Không thực hiện hành vi gạt giò hoặc hành động có nguy cơ gây tử
+              vong ngoài ý muốn trái quy định.
+            </p>
+            <p>
+              Việc xử phạt từng trường hợp phải căn cứ vào diễn biến thực tế và
+              luật của phó bản.
+            </p>
+            <p>
+              Cư dân cố tình lao xuống nước để trốn truy đuổi: áp dụng mức phạt
+              gấp 3 (X3 tội ).
+            </p>
+            <p class="law-line">🔒 4. Quy định còng tay khi truy đuổi</p>
+            <p>
+              Khi phương tiện hư hỏng hoặc đối tượng bị văng khỏi xe, thời gian
+              10 giây chỉ áp dụng trong các trường hợp được luật quy định.
+            </p>
+            <p>
+              Nếu được phép sử dụng xe backup, đối tượng phải tuân thủ giới hạn
+              và điều kiện của phó bản.
+            </p>
+            <p>
+              Khi hết thời gian cho phép mà đối tượng vẫn cố tình bỏ chạy hoặc
+              không chấp hành hiệu lệnh, Cảnh sát được phép khống chế theo quy
+              định.
+            </p>
+            <p>
+              Nếu đối tượng chủ động chống đối, tấn công hoặc cố tình cản trở
+              việc khống chế, có thể áp dụng biện pháp phù hợp mà không cần chờ
+              hết 10 giây trong các trường hợp luật cho phép.
+            </p>
+            <p>
+              Khi đã bị khống chế hoặc còng tay, không được tiếp tục bỏ chạy,
+              gọi backup hoặc tìm cách thoát khỏi tình huống.
+            </p>
+            <p>🗺️ 5. Rớt map và va chạm</p>
+            <p>
+              Khi xảy ra lỗi rớt map, cư dân phải chủ động liên hệ Cảnh sát để
+              tiếp tục xử lý tình huống.
+            </p>
+            <p>
+              Nếu có va chạm mạnh trong quá trình truy đuổi tốc độ cao, cần xem
+              xét diễn biến thực tế trước khi kết luận Cảnh sát cố ý tông xe.
+            </p>
+            <p>
+              Hành vi cố tình lợi dụng lỗi game để né kiểm tra, trốn tránh xử lý
+              hoặc phá RP có thể bị chuyển hồ sơ lên Tòa Thị Chính.
+            </p>
+            <p>🚙 6. Quy định cấm backup</p>
+            <p>
+              Các trường hợp
+              <strong style="text-transform: uppercase">cấm backup:</strong>
+            </p>
+            <ul>
+              <li>Trộm đồng hồ.</li>
+              <li>Trộm biển báo.</li>
+            </ul>
+            <hr class="source-divider" />
+          </div>
+        </section>
+        <section
+          class="law-section"
+          data-title="🟥 nhóm #3 — luật hành chính"
+          id="section-3"
+        >
+          <button aria-expanded="true" class="section-toggle" type="button">
+            <span class="section-title">🟥 NHÓM #3 — LUẬT HÀNH CHÍNH</span
+            ><span class="chevron">−</span>
+          </button>
+          <div class="section-content">
+            <div class="table-wrap">
+              <table class="fine-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Hành vi vi phạm</th>
+                    <th scope="col">Mức phạt</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Không mang bằng lái</td>
+                    <td>5.000$ + tịch thu phương tiện</td>
+                  </tr>
+                  <tr>
+                    <td>Không mang CCCD</td>
+                    <td>5.000$</td>
+                  </tr>
+                  <tr>
+                    <td>Quá tốc độ mức 1</td>
+                    <td>5.000$</td>
+                  </tr>
+                  <tr>
+                    <td>Quá tốc độ mức 2</td>
+                    <td>8.000$</td>
+                  </tr>
+                  <tr>
+                    <td>Quá tốc độ mức 3</td>
+                    <td>12.000$</td>
+                  </tr>
+                  <tr>
+                    <td>Vi phạm tín hiệu giao thông, lái xe nguy hiểm</td>
+                    <td>10.000$</td>
+                  </tr>
+                  <tr>
+                    <td>Chở quá số người quy định</td>
+                    <td>20.000$</td>
+                  </tr>
+                  <tr>
+                    <td>Điều khiển phương tiện không chính chủ</td>
+                    <td>10.000$ + tịch thu phương tiện</td>
+                  </tr>
+                  <tr>
+                    <td>Đua xe trái phép</td>
+                    <td>15.000$ + tịch thu phương tiện</td>
+                  </tr>
+                  <tr>
+                    <td>Chuộc xe sau khi bị giam</td>
+                    <td>5.000$/xe</td>
+                  </tr>
+                  <tr>
+                    <td>Không hợp tác khi Cảnh sát yêu cầu lục soát hợp lệ</td>
+                    <td>30.000$</td>
+                  </tr>
+                  <tr>
+                    <td>Che kín mặt trái quy định</td>
+                    <td>5.000$</td>
+                  </tr>
+                  <tr>
+                    <td>Cướp phương tiện quân sự</td>
+                    <td>60.000$ + 30 phút tù liên bang</td>
+                  </tr>
+                  <tr>
+                    <td>Sử dụng phương tiện quá khổ</td>
+                    <td>100.000$ + 70 bãi lao động</td>
+                  </tr>
+                  <tr>
+                    <td>Đậu xe sai tại khu vực nhạy cảm</td>
+                    <td>Nhắc nhở; tái phạm thu xe + 6.000$</td>
+                  </tr>
+                  <tr>
+                    <td>Đậu xe sai hoặc bỏ xe tại vùng cấm</td>
+                    <td>6.000$ + tạm giữ xe 10 phút</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="law-line">
+              📌 Lưu ý: Các mức phạt bổ sung, thời gian giam giữ và hình thức xử
+              lý tái phạm được áp dụng theo quy định chi tiết tương ứng.
+            </p>
+            <hr class="source-divider" />
+          </div>
+        </section>
+        <section
+          class="law-section"
+          data-title="🟪 nhóm #4 — luật hình sự"
+          id="section-4"
+        >
+          <button aria-expanded="true" class="section-toggle" type="button">
+            <span class="section-title">🟪 NHÓM #4 — LUẬT HÌNH SỰ</span
+            ><span class="chevron">−</span>
+          </button>
+          <div class="section-content">
+            <div class="table-wrap">
+              <table class="fine-table criminal-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Hành vi vi phạm</th>
+                    <th scope="col">Tiền phạt</th>
+                    <th scope="col">Tù liên bang</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Gây rối trật tự công cộng</td>
+                    <td>10.000–30.000$</td>
+                    <td>15–20 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Cản trở người thi hành công vụ</td>
+                    <td>10.000–20.000$</td>
+                    <td>20–25 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Trêu chọc, xúc phạm Cảnh sát</td>
+                    <td>20.000–30.000$</td>
+                    <td>20–35 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Đe dọa, chống đối nghiêm trọng</td>
+                    <td>10.000–30.000$</td>
+                    <td>20–30 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Giả mạo nhân viên nhà nước</td>
+                    <td>10.000–20.000$</td>
+                    <td>20–40 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Tấn công lực lượng chức năng</td>
+                    <td>20.000–50.000$</td>
+                    <td>30–50 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Phân biệt chủng tộc, xúc phạm nghiêm trọng</td>
+                    <td>20.000–50.000$</td>
+                    <td>40–60 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Cố ý gây thương tích</td>
+                    <td>10.000–30.000$</td>
+                    <td>15–25 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Giết người</td>
+                    <td>40.000–60.000$</td>
+                    <td>40–60 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Tàng trữ, sử dụng hoặc mua bán vũ khí trái phép</td>
+                    <td>50.000–70.000$</td>
+                    <td>30–50 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Vượt ngục hoặc trốn khỏi đồn</td>
+                    <td>20.000–40.000$</td>
+                    <td>30–40 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Phi tang vật chứng</td>
+                    <td>5.000–10.000$</td>
+                    <td>10–30 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Cướp hoặc trộm đồ nhân viên nhà nước</td>
+                    <td>70.000$</td>
+                    <td>200 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Trộm cắp tài sản</td>
+                    <td>10.000$</td>
+                    <td>20 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Quảng cáo nghề bẩn, hàng cấm sai quy định</td>
+                    <td>20.000$</td>
+                    <td>30 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Phá hoại tài sản cá nhân</td>
+                    <td>5.000$</td>
+                    <td>50 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Phá hoại tài sản chính phủ</td>
+                    <td>10.000$</td>
+                    <td>100 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Cưỡng đoạt tài sản</td>
+                    <td>20.000$</td>
+                    <td>20 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Vu khống</td>
+                    <td>6.000–10.000$</td>
+                    <td>Theo mức độ</td>
+                  </tr>
+                  <tr>
+                    <td>Đánh nhau</td>
+                    <td>20.000–40.000$</td>
+                    <td>50 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Mua bán hàng cấm</td>
+                    <td>20.000–40.000$</td>
+                    <td>50 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Mua bán dụng cụ làm đồ bẩn</td>
+                    <td>10.000–30.000$</td>
+                    <td>50 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Mua bán vật phẩm bẩn</td>
+                    <td>20.000–40.000$</td>
+                    <td>50 phút</td>
+                  </tr>
+                  <tr>
+                    <td>Hành vi đồi trụy, phản cảm</td>
+                    <td>50.000–100.000$</td>
+                    <td>Theo quy định</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="law-line">⚖️ Quy định bổ sung</p>
+            <p>
+              Nhân viên nhà nước vi phạm có thể bị tăng mức xử lý, hạ chức hoặc
+              sa thải.
+            </p>
+            <p>
+              Hành vi cố tình phá RP, phi tang vật chứng hoặc tái phạm có thể bị
+              tăng nặng theo luật.
+            </p>
+            <p>
+              Các mức phạt có thể được áp dụng đồng thời khi đủ căn cứ cho nhiều
+              tội danh khác nhau.
+            </p>
+            <div class="law-note">
+              <strong>📌 Lưu ý</strong>
+              <p>
+                Đối với hành vi trộm đồng hồ và trộm biển báo, áp dụng mức phạt
+                riêng tại Nhóm #11, không tự động áp dụng mức phạt trộm cắp tài
+                sản thông thường thay cho mức phạt của phó bản.
+              </p>
+            </div>
+            <hr class="source-divider" />
+          </div>
+        </section>
+
+        <section
+          class="law-section"
+          data-title="🟫 nhóm #5 — luật tàng trữ"
+          id="section-6"
+        >
+          <button aria-expanded="true" class="section-toggle" type="button">
+            <span class="section-title">🟫 NHÓM #5 — LUẬT TÀNG TRỮ</span
+            ><span class="chevron">−</span>
+          </button>
+          <div class="section-content">
+            <p class="law-line">📦 1. Nguyên tắc chung</p>
+            <p>
+              Cảnh sát không có nghĩa vụ phải cho cư dân chuộc lại đồ bẩn. Việc
+              xử lý và thu hồi vật phẩm thực hiện theo quy định của thành phố.
+            </p>
+            <p class="law-line">🔧 2. Bộ phá khóa và dụng cụ làm bẩn</p>
+            <p>Số lượng được phép: tối đa 2 đơn vị.</p>
+            <p>Vượt quá giới hạn: phạt 1.000$/đơn vị.</p>
+            <p class="law-line">🔫 3. Vũ khí trái phép</p>
+            <p>
+              Vũ khí không có số seri hợp lệ hoặc không có giấy phép sử dụng
+              theo quy định:
+            </p>
+            <p><strong>Mức phạt: 30.000–50.000$.</strong></p>
+            <p class="law-line">🚔 4. Đồ thuộc ban ngành Cảnh sát</p>
+            <p>
+              Bao gồm vũ khí cấp phát, còng tay, dùi cui, súng điện, bộ đàm, phù
+              hiệu, trang phục, thẻ ngành và thiết bị nghiệp vụ.
+            </p>
+            <p>Nghiêm cấm tàng trữ trái phép.</p>
+            <p>Phạt: 20.000$/đơn vị.</p>
+            <p>Lao động công ích: 20–40 bãi.</p>
+            <p>Tịch thu toàn bộ vật phẩm vi phạm.</p>
+            <p>Có thể xử lý bổ sung tội danh nếu đủ căn cứ.</p>
+            <p class="law-line">🏥 5. Đồ thuộc ngành Y tế</p>
+            <p>
+              Bao gồm túi cứu thương, thuốc đặc trị, morphine, băng gạc chuyên
+              dụng, máy sốc tim và thiết bị cấp cứu.
+            </p>
+            <p>Phạt: 15.000$/đơn vị.</p>
+            <p>Lao động công ích: 15–30 bãi.</p>
+            <p>Tịch thu toàn bộ vật phẩm vi phạm.</p>
+          </div>
+        </section>
+
+        <section
+          class="law-section"
+          data-title="🟩 nhóm #6 — quy định dành cho cảnh sát"
+          id="section-7"
+        >
+          <button aria-expanded="true" class="section-toggle" type="button">
+            <span class="section-title"
+              >🟩 NHÓM #6 — QUY ĐỊNH DÀNH CHO CẢNH SÁT</span
+            ><span class="chevron">−</span>
+          </button>
+          <div class="section-content">
+            <p class="law-line">👮 1. Tác phong và đạo đức nghề nghiệp</p>
+            <p>
+              Luôn giao tiếp lịch sự, không xưng hô thiếu chuẩn mực với cư dân.
+            </p>
+            <p>
+              Nghiêm cấm thái độ hách dịch, lạm quyền hoặc cố tình gây khó dễ.
+            </p>
+            <p>Không tuồn trang bị nhà nước ra ngoài.</p>
+            <p>
+              Không sử dụng xe hoặc trực thăng chuyên dụng cho mục đích cá nhân.
+            </p>
+            <p>Không ON-DUTY để làm nghề khác.</p>
+            <p>Không ON-DUTY treo lương hoặc AFK quá 5 phút.</p>
+            <p>🚓 Chế tài sử dụng phương tiện sai mục đích:</p>
+            <p>Lần 1: Cảnh cáo.</p>
+            <p>Lần 2: Phạt 100.000$.</p>
+            <p>Lần 3: Sa thải.</p>
+            <p class="law-line">
+              🎒 Chế tài sử dụng trang bị sai mục đích hoặc khi OFF-DUTY:
+            </p>
+            <p>Lần 1: Tịch thu trang bị ngành trong 3 ngày.</p>
+            <p>Lần 2: Sa thải.</p>
+            <p class="law-line">⛔ Chế tài ON-DUTY làm nghề khác:</p>
+            <p>Lần 1: Cảnh cáo.</p>
+            <p>Lần 2: Sa thải.</p>
+            <p class="law-line">💤 Chế tài ON-DUTY treo lương/AFK:</p>
+            <p>Lần 1: Nhắc nhở.</p>
+            <p>Lần 2: Phạt 100.000$.</p>
+            <p>Lần 3: Sa thải.</p>
+            <p class="law-line">📋 2. Quy trình xử lý vi phạm</p>
+            <p>Chào hỏi và xuất trình thẻ ngành theo quy trình.</p>
+            <p>
+              Yêu cầu đối tượng tháo mặt nạ và xuất trình CCCD, bằng lái khi cần
+              thiết.
+            </p>
+            <p>Thông báo rõ hành vi vi phạm, tội danh và mức phạt.</p>
+            <p>Tiến hành xử lý theo luật.</p>
+            <p>Lập báo cáo hoặc cung cấp bằng chứng khi có khiếu nại.</p>
+            <p class="law-line">🚨 3. Quy định tuần tra khu vực cấm</p>
+            <p>Mỗi lần kiểm tra tối đa 15 phút.</p>
+            <p>Nghiêm cấm camp liên tục tại khu vực cấm.</p>
+            <p>Nghiêm cấm tham gia băng đảng hoặc làm nghề bẩn trái phép.</p>
+            <p>
+              Khi phát hiện Cảnh sát bẩn, báo cáo cấp quản lý để xem xét xử lý.
+            </p>
+            <p>
+              Việc xử lý phải có căn cứ và tuân thủ quy định chứng cứ của thành
+              phố.
+            </p>
+            <p>🚓 4. Điều kiện tham gia nhiệm vụ</p>
+            <p>Mặc đồng phục đúng quy định.</p>
+            <p>Sử dụng phương tiện chuyên dụng của LSPD.</p>
+            <p>Đảm bảo micro và bộ đàm hoạt động ổn định.</p>
+            <p>Khi có khiếu nại, phải cung cấp bằng chứng phù hợp.</p>
+            <p class="law-line">⛔ 5. Hành vi nghiêm cấm</p>
+            <p>
+              Tuồn trang bị Cảnh sát ra ngoài: sa thải + 300 phút tù liên bang.
+            </p>
+            <p>
+              Lạm quyền hoặc bao che tội phạm: sa thải + 200 phút tù liên bang.
+            </p>
+            <p>
+              Vứt xe sai quy định: lần 1 phạt 5.000$; lần 2 phạt 10.000$; lần 3
+              hạ chức.
+            </p>
+            <p>Làm nghề bẩn: sa thải + 100.000$ + 200 phút tù liên bang.</p>
+            <p class="law-line">🔫 6. Trang bị và sử dụng vũ khí</p>
+            <p>
+              Súng điện chỉ được sử dụng khi cần thiết để khống chế đối tượng
+              theo luật.
+            </p>
+            <p>Còng tay chỉ được sử dụng khi có căn cứ nghiệp vụ phù hợp.</p>
+            <p>
+              Baton không được sử dụng tùy tiện để đe dọa hoặc trấn áp khi không
+              cần thiết.
+            </p>
+            <p>Xe ngành phải được đưa về garage khi không còn sử dụng.</p>
+            <p>
+              Súng Pistol cỡ nhỏ chỉ dành cho các cấp được phép và phải tuân thủ
+              quy trình xin cấp phép của Chief of Police.
+            </p>
+            <p class="law-line">🛡️ 7. Quy định tại khu vực nguy hiểm</p>
+            <p>Bật đèn và còi báo hiệu theo khoảng cách được quy định.</p>
+            <p>Ưu tiên bảo vệ con tin và tính mạng người liên quan.</p>
+            <p>
+              Khi xảy ra cướp cửa hàng, phải thực hiện đàm phán theo quy trình.
+            </p>
+            <p>
+              Bác sĩ không được tự ý vào khu vực cấm nếu chưa đáp ứng điều kiện
+              hỗ trợ an toàn.
+            </p>
+            <hr class="source-divider" />
+          </div>
+        </section>
+        <section
+          class="law-section"
+          data-title="🏢 nhóm #7 — quy định đối với doanh nghiệp"
+          id="section-7"
+        >
+          <button aria-expanded="true" class="section-toggle" type="button">
+            <span class="section-title"
+              >🏢 NHÓM #7 — QUY ĐỊNH ĐỐI VỚI DOANH NGHIỆP</span
+            ><span class="chevron">−</span>
+          </button>
+          <div class="section-content">
+            <p>📢 1. Quyền hạn kiểm tra</p>
+            <p>
+              LSPD có quyền kiểm tra hành chính người, phương tiện và cơ sở vật
+              chất của doanh nghiệp khi có thông báo chính thức theo quy định.
+            </p>
+            <p class="law-line">📋 2. Trách nhiệm của doanh nghiệp</p>
+            <p>Hợp tác trong quá trình kiểm tra, xác minh.</p>
+            <p>Chấp hành yêu cầu tạm dừng hoạt động hợp lệ.</p>
+            <p>Cung cấp thông tin và giấy tờ liên quan khi được yêu cầu.</p>
+            <p>
+              Nhân viên thực hiện nhiệm vụ với cơ quan chức năng phải xuất trình
+              thẻ ngành hoặc giấy tờ chứng minh nghề nghiệp phù hợp.
+            </p>
+            <hr class="source-divider" />
+          </div>
+        </section>
+        <section
+          class="law-section"
+          data-title="🧰 nhóm #8 — trang bị ban ngành"
+          id="section-8"
+        >
+          <button aria-expanded="true" class="section-toggle" type="button">
+            <span class="section-title">🧰 NHÓM #8 — TRANG BỊ BAN NGÀNH</span
+            ><span class="chevron">−</span>
+          </button>
+          <div class="section-content">
+            <p>⚡ 1. Súng điện</p>
+            <p>
+              Chỉ sử dụng để khống chế đối tượng không chấp hành hiệu lệnh hoặc
+              có hành vi chống đối trong những trường hợp được luật cho phép.
+            </p>
+            <p class="law-line">🔒 2. Còng tay</p>
+            <p>
+              Sử dụng sau khi đối tượng đã đủ điều kiện bị khống chế. Không còng
+              tay tùy tiện người dân không liên quan.
+            </p>
+            <p class="law-line">🪃 3. Baton</p>
+            <p>
+              Chỉ sử dụng khi cần thiết để xử lý hành vi chống đối hoặc gây nguy
+              hiểm, không lạm dụng khi có thể giải quyết bằng biện pháp nhẹ hơn.
+            </p>
+            <p>🚔 4. Xe chuyên dụng</p>
+            <p>Không cho cư dân mượn xe ngành.</p>
+            <p>Không vứt xe giữa đường hoặc tại nơi công cộng.</p>
+            <p>Đưa xe về garage sau khi kết thúc nhiệm vụ.</p>
+            <p class="law-line">🔫 5. Súng Pistol</p>
+            <p>
+              Chỉ cấp cho các sĩ quan đủ điều kiện thuộc UPD/SWAT theo quy định
+              và được Chief of Police cho phép.
+            </p>
+            <p>Sau khi hoàn thành nhiệm vụ:</p>
+            <p>Giao nộp súng và đạn.</p>
+            <p>Báo cáo tình huống sử dụng vũ khí.</p>
+            <p>Chịu trách nhiệm nếu sử dụng sai quy định.</p>
+            <hr class="source-divider" />
+          </div>
+        </section>
+        <section
+          class="law-section"
+          data-title="⚔️ nhóm #9 — luật chống trả cảnh sát"
+          id="section-9"
+        >
+          <button aria-expanded="true" class="section-toggle" type="button">
+            <span class="section-title"
+              >⚔️ NHÓM #9 — LUẬT CHỐNG TRẢ CẢNH SÁT</span
+            ><span class="chevron">−</span>
+          </button>
+          <div class="section-content">
+            <p>👥 1. Điều kiện chống trả</p>
+            <p>
+              Tối thiểu 4 người dân và 1 vũ khí cho mỗi Cảnh sát theo tỷ lệ quy
+              định.
+            </p>
+            <p>Ví dụ: 8 người dân, 2 vũ khí đối với 2 Cảnh sát.</p>
+            <p>
+              Chỉ áp dụng tại những khu vực được luật công nhận như Red Zone
+              hoặc khu vực vắng vẻ theo quy định.
+            </p>
+            <p class="law-line">👮 2. Quy định đối với Cảnh sát</p>
+            <p>Khi người dân đủ điều kiện chống trả:</p>
+            <p>Cảnh sát phải xử lý theo quy tắc giao tranh.</p>
+            <p>
+              Không sử dụng súng điện hoặc còng tay trong trường hợp luật chống
+              trả nghiêm cấm.
+            </p>
+            <p>
+              Nếu người dân chống trả khi chưa đủ điều kiện, Cảnh sát được áp
+              dụng biện pháp khống chế theo luật.
+            </p>
+            <p>🏁 3. Kết thúc tình huống</p>
+            <p>
+              Nếu toàn bộ Cảnh sát bị hạ gục hoàn toàn, người dân phải rời khỏi
+              khu vực giao tranh; Cảnh sát không được bắt người đã chết theo quy
+              định mất trí nhớ.
+            </p>
+            <p>
+              Nếu còn Cảnh sát sống hoặc chỉ bị ngất, việc bắt giữ người tham
+              gia giao tranh được thực hiện theo luật.
+            </p>
+            <p>
+              Nếu Cảnh sát kiểm soát được tình huống, những người tham gia có
+              thể bị bắt và xử lý theo tội danh tương ứng.
+            </p>
+            <hr class="source-divider" />
+          </div>
+        </section>
+        <section
+          class="law-section"
+          data-title="🔥 nhóm #10 — luật can thiệp và trấn áp bạo lực"
+          id="section-10"
+        >
+          <button aria-expanded="true" class="section-toggle" type="button">
+            <span class="section-title"
+              >🔥 NHÓM #10 — LUẬT CAN THIỆP VÀ TRẤN ÁP BẠO LỰC</span
+            ><span class="chevron">−</span>
+          </button>
+          <div class="section-content">
+            <p>📍 1. Phạm vi áp dụng</p>
+            <p>
+              Áp dụng tại các khu vực theo quy định của thành phố, ngoại trừ
+              Vùng Xanh nếu luật TTC quy định khác.
+            </p>
+            <p>😷 2. Quy định che mặt</p>
+            <p>
+              Người tham gia giao tranh bắt buộc đeo mặt nạ theo luật. Nếu không
+              đeo, Cảnh sát có quyền xác minh danh tính theo quy định.
+            </p>
+            <p class="law-line">🚗 3. Quy định đối với cư dân</p>
+            <p>Được sử dụng phương tiện tẩu thoát theo luật.</p>
+            <p>
+              Sau khi giao tranh kết thúc, phải rời khu vực trong vòng 30 giây.
+            </p>
+            <p>
+              Người cố tình ở lại hoặc cản trở lực lượng chức năng có thể bị xử
+              lý theo luật truy đuổi.
+            </p>
+            <p>🚔 4. Quy định đối với Cảnh sát</p>
+            <p>
+              Khi nhận tin giao tranh, tiến hành lập chốt theo khoảng cách quy
+              định.
+            </p>
+            <p>Chờ đủ thời gian theo luật trước khi tiến hành vây bắt.</p>
+            <p>
+              Được gọi phương tiện hỗ trợ khi phương tiện truy đuổi bị hư hỏng
+              hoặc không thể tiếp tục.
+            </p>
+            <p class="law-line">⚠️ 5. Cản trở truy bắt</p>
+            <p>
+              Mọi phương tiện cố tình cản trở Cảnh sát hoặc hỗ trợ tội phạm bỏ
+              trốn có thể bị xử lý theo luật tòng phạm tương ứng nếu đủ căn cứ.
+            </p>
+            <hr class="source-divider" />
+          </div>
+        </section>
+        <section
+          class="law-section"
+          data-title="⌚ nhóm #11 — luật cướp đồng hồ, trộm biển báo"
+          id="section-11"
+        >
+          <button aria-expanded="true" class="section-toggle" type="button">
+            <span class="section-title"
+              >⌚ NHÓM #11 — LUẬT CƯỚP ĐỒNG HỒ, TRỘM BIỂN BÁO</span
+            ><span class="chevron">−</span>
+          </button>
+          <div class="section-content">
+            <p class="law-line">👤 1. Yêu cầu đối với cư dân</p>
+            <p>Bắt buộc đeo mặt nạ trong suốt quá trình thực hiện.</p>
+            <p>
+              Cấm cõng, vác hoặc treo bám lên người để lợi dụng cơ chế game.
+            </p>
+            <p>
+              Cấm sử dụng emote, dáng đi hoặc thủ thuật gây mất công bằng RP.
+            </p>
+            <p>
+              Nhân sự: tối thiểu 1 người, tối đa 4 người; số người trực tiếp
+              thực hiện phải đúng quy định.
+            </p>
+            <p class="law-line">🚘 2. Phương tiện được phép</p>
+            <ul>
+              <li>
+                <p>🚗 Ô tô 4 bánh loại 2 chỗ hoặc 4 chỗ.</p>
+              </li>
+              <li><p>🏍️ Xe mô tô 2 bánh.</p></li>
+            </ul>
+            <p>Xe phải hoạt động bình thường.</p>
+            <p>🚫 Cấm sử dụng:</p>
+            <ul>
+              <li><p>Xe quá khổ.</p></li>
+              <li><p>Siêu xe nếu bị hạn chế.</p></li>
+              <li><p>Xe 6/8 bánh.</p></li>
+              <li><p>Xe event.</p></li>
+              <li><p>Xe tân thủ.</p></li>
+              <li><p>Xe cốp.</p></li>
+              <li><p>Thuyền, ca-nô và phương tiện bay.</p></li>
+            </ul>
+            <p class="law-line">🚨 3. Khi Cảnh sát xuất hiện</p>
+            <p>
+              Nếu chưa thực hiện hành động trộm, cư dân phải rời khỏi khu vực
+              khi phát hiện tín hiệu Cảnh sát.
+            </p>
+            <p>
+              Nếu hành động đang diễn ra, Cảnh sát xử lý theo điều kiện và thời
+              điểm truy đuổi của phó bản.
+            </p>
+            <p>
+              Cảnh sát được kiểm tra hành chính trong phạm vi 0,25 mile theo quy
+              định.
+            </p>
+            <p>⏱️ 4. THỜI GIAN TRUY ĐUỔI &amp; QUY ĐỊNH TRIỆT HẠ</p>
+            <p class="law-line">🔵 Còi 1: 2 phút.</p>
+            <p class="law-line">🟠 Còi 2: 2 phút.</p>
+            <p class="law-line">🔴 Còi 3: 1 phút.</p>
+            <p>Sau còi 3 được phép triệt hạ</p>
+            <p class="law-line">🏍️ Đối với xe máy (2 bánh)</p>
+            <p>
+              Đến thời gian triệt hạ , cảnh sát được phép triệt hạ bằng cách bắn
+              vào lốp xe tùy trường hợp.
+            </p>
+            <p>
+              Nếu đối tượng bị ngã xe 2 lần trong quá trình truy đuổi, cảnh sát
+              được phép tiến hành bắt giữ đối tượng.
+            </p>
+            <p class="law-line">🚗 Đối với ô tô (4 bánh)</p>
+            <p>
+              Áp dụng quy định triệt hạ thông thường theo luật PD hiện hành.
+            </p>
+            <p>
+              Cảnh sát được phép triệt hạ theo đúng quy định còi và thời gian
+              truy đuổi.
+            </p>
+            <p class="law-line">💵 5. BẢNG GIÁ ÁN PHẠT</p>
+            <div class="table-wrap">
+              <table class="fine-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Hành vi vi phạm</th>
+                    <th scope="col">Mức phạt</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>⌚ Trộm đồng hồ</td>
+                    <td>5.000$ + 10 bãi lao động/vụ</td>
+                  </tr>
+                  <tr>
+                    <td>🚧 Trộm biển báo</td>
+                    <td>7.000$ + 10 bãi lao động/vụ</td>
+                  </tr>
+                  <tr>
+                    <td>Phi tang chứng cứ</td>
+                    <td>25.000$ + 50 phút tù</td>
+                  </tr>
+                  <tr>
+                    <td>Chuộc xe</td>
+                    <td>5.000$/chiếc</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="law-line">📌 Quy định xử phạt:</p>
+            <p>
+              Mức phạt trộm đồng hồ và trộm biển báo được tính riêng cho mỗi vụ
+              vi phạm.
+            </p>
+            <p>
+              Cư dân phải chấp hành đúng quy định về nhân sự, phương tiện và
+              cách thức thực hiện phó bản.
+            </p>
+            <p>
+              Cố tình sai luật hoặc phá RP có thể bị tăng mức phạt, triệt hạ
+              phương tiện và chuyển hồ sơ lên Tòa Thị Chính.
+            </p>
+            <p>
+              Không tự ý cộng thêm mức phạt của tội danh khác nếu không đủ căn
+              cứ hoặc không thuộc trường hợp được áp dụng đồng thời theo luật.
+            </p>
+            <p class="law-line">
+              ⚠️ Lưu ý đặc biệt: Trong 30 phút Happy Time (động đất), không được
+              cướp hoặc tham gia phó bản khác theo quy định.
+            </p>
+            <hr class="source-divider" />
+          </div>
+        </section>
+        <section
+          class="law-section"
+          data-title="📌 quy định cuối cùng"
+          id="section-12"
+        >
+          <button aria-expanded="true" class="section-toggle" type="button">
+            <span class="section-title">📌 QUY ĐỊNH CUỐI CÙNG</span
+            ><span class="chevron">−</span>
+          </button>
+          <div class="section-content">
+            <p>
+              Toàn thể cư dân và sĩ quan LSPD có trách nhiệm nghiêm túc thực
+              hiện bộ nội quy trên.
+            </p>
+            <p>
+              Mọi hành vi vi phạm sẽ được xem xét dựa trên bằng chứng, diễn biến
+              thực tế và quy định hiện hành của thành phố.
+            </p>
+            <p>
+              Mỗi cư dân có trách nhiệm tìm hiểu và chấp hành luật. Mỗi sĩ quan
+              LSPD có trách nhiệm thực thi đúng quy trình, xử lý công bằng, minh
+              bạch và không lạm quyền.
+            </p>
+            <p>🚔 LSPD — KỶ LUẬT • CÔNG BẰNG • TRÁCH NHIỆM</p>
+            <p>Vì một Louge Town văn minh, trật tự và phát triển.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+    <!-- <footer>
+      Nội dung luật được trình bày theo văn bản nguồn được cung cấp. Trang HTML
+      không tự bổ sung hoặc điều chỉnh các điều khoản và mức phạt.
+    </footer> -->
+    <script>
+      const search = document.getElementById("search");
+      const sections = [...document.querySelectorAll(".law-section")];
+      const empty = document.getElementById("empty");
+
+      function normalize(s) {
+        return s
+          .toLocaleLowerCase("vi")
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/đ/g, "d");
+      }
+      function applySearch() {
+        const q = normalize(search.value.trim());
+        let shown = 0;
+        sections.forEach((section) => {
+          const text = normalize(section.innerText);
+          const match = !q || text.includes(q);
+          section.style.display = match ? "" : "none";
+          if (match) shown++;
+        });
+        empty.style.display = shown ? "none" : "block";
+      }
+      search.addEventListener("input", applySearch);
+      document.querySelectorAll(".section-toggle").forEach((button) => {
+        button.addEventListener("click", () => {
+          const content = button.nextElementSibling;
+          const expanded = button.getAttribute("aria-expanded") === "true";
+          button.setAttribute("aria-expanded", String(!expanded));
+          content.style.display = expanded ? "none" : "";
+          button.querySelector(".chevron").textContent = expanded ? "+" : "−";
+        });
+      });
+      document.getElementById("expandAll").addEventListener("click", () => {
+        sections.forEach((s) => {
+          s.querySelector(".section-toggle").setAttribute(
+            "aria-expanded",
+            "true"
+          );
+          s.querySelector(".section-content").style.display = "";
+          s.querySelector(".chevron").textContent = "−";
+        });
+      });
+      document.getElementById("collapseAll").addEventListener("click", () => {
+        sections.forEach((s) => {
+          s.querySelector(".section-toggle").setAttribute(
+            "aria-expanded",
+            "false"
+          );
+          s.querySelector(".section-content").style.display = "none";
+          s.querySelector(".chevron").textContent = "+";
+        });
+      });
+      document
+        .getElementById("print")
+        .addEventListener("click", () => window.print());
+    </script>
+  </body>
+</html>
