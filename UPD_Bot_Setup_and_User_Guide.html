@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Hướng dẫn setup và sử dụng bot Discord UPD"
+    />
+    <title>Hướng dẫn setup và sử dụng bot UPD</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #172033;
+        --muted: #5d687b;
+        --line: #dbe2ec;
+        --accent: #173f72;
+        --bg: #f4f7fb;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial,
+          sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        line-height: 1.65;
+      }
+      header {
+        background: linear-gradient(135deg, #102844, #1f5285);
+        color: #fff;
+        padding: 42px 24px 34px;
+      }
+      .hero {
+        max-width: 1040px;
+        margin: auto;
+      }
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-size: 0.78rem;
+        opacity: 0.8;
+        font-weight: 700;
+      }
+      h1 {
+        margin: 0.35rem 0 0.5rem;
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1.15;
+      }
+      header p {
+        margin: 0;
+        color: #e4edf7;
+        max-width: 760px;
+      }
+      main {
+        max-width: 1040px;
+        margin: 28px auto 64px;
+        padding: 0 20px;
+      }
+      article {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: clamp(20px, 4vw, 44px);
+        box-shadow: 0 8px 28px rgba(25, 45, 75, 0.06);
+      }
+      h2 {
+        margin: 2.2rem 0 0.8rem;
+        padding-bottom: 0.45rem;
+        border-bottom: 1px solid var(--line);
+        color: var(--accent);
+        font-size: 1.45rem;
+      }
+      h3 {
+        margin: 1.55rem 0 0.55rem;
+        color: #243e60;
+        font-size: 1.1rem;
+      }
+      p {
+        margin: 0.7rem 0;
+      }
+      li {
+        margin: 0.28rem 0;
+      }
+      ul,
+      ol {
+        padding-left: 1.5rem;
+      }
+      blockquote {
+        border-left: 4px solid #4b82b7;
+        background: #f0f6fc;
+        padding: 12px 16px;
+        margin: 18px 0;
+        border-radius: 0 8px 8px 0;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 14px 0 22px;
+        font-size: 0.94rem;
+      }
+      th,
+      td {
+        text-align: left;
+        border: 1px solid var(--line);
+        padding: 10px 12px;
+        vertical-align: top;
+      }
+      th {
+        background: #edf3f9;
+        color: #173f72;
+      }
+      tr:nth-child(even) td {
+        background: #fafcff;
+      }
+      code {
+        background: #eef2f7;
+        border-radius: 5px;
+        padding: 2px 5px;
+        font-family: Consolas, monospace;
+        font-size: 0.92em;
+      }
+      .check {
+        padding: 4px 0;
+      }
+      footer {
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 0 20px 32px;
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+      @media (max-width: 650px) {
+        header {
+          padding: 30px 18px;
+        }
+        main {
+          padding: 0 10px;
+          margin-top: 14px;
+        }
+        article {
+          padding: 18px;
+        }
+        table {
+          font-size: 0.85rem;
+        }
+        th,
+        td {
+          padding: 7px;
+        }
+      }
+      @media print {
+        body {
+          background: #fff;
+        }
+        header {
+          background: #fff;
+          color: #111;
+          padding: 0 0 18px;
+        }
+        header p {
+          color: #333;
+        }
+        main {
+          margin: 0 auto;
+        }
+        article {
+          border: 0;
+          box-shadow: none;
+          padding: 0;
+        }
+        footer {
+          padding-top: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="hero">
+        <div class="eyebrow">UPD • Hệ thống Cảnh sát</div>
+        <h1>Hướng dẫn setup và sử dụng bot</h1>
+        <p>
+          Tài liệu dành cho quản trị viên và nhân sự vận hành server Discord —
+          quy trình cấu hình, danh sách lệnh và hướng dẫn vận hành.
+        </p>
+      </div>
+    </header>
+    <main>
+      <article>
+        <h1>HƯỚNG DẪN SETUP VÀ SỬ DỤNG BOT UPD</h1>
+        <p><strong>Hệ thống Cảnh sát | UPD</strong></p>
+        <p>
+          *Tài liệu dành cho quản trị viên và nhân sự vận hành server Discord.*
+        </p>
+        <p>---</p>
+        <h2>1. Mục đích</h2>
+        <p>
+          Tài liệu này hướng dẫn cách thiết lập bot UPD trên một server Discord
+          mới và cách sử dụng các nhóm lệnh chính: cấu hình server, nhân
+          sự/Callsign, tuyển dụng, thi tuyển, MDT, Duty, thống kê và tiện ích.
+        </p>
+        <blockquote>
+          **Lưu ý về phạm vi:** Danh sách lệnh trong tài liệu được tổng hợp từ
+          ảnh danh sách slash command do quản trị viên cung cấp. Ảnh chỉ thể
+          hiện tên lệnh và mô tả ngắn, không hiển thị toàn bộ tham số (options),
+          quyền hạn hoặc quy tắc xử lý bên trong từng lệnh. Vì vậy, hãy mở lệnh
+          trong Discord để xem các trường cần nhập. Không tự suy đoán ID, tên
+          option hoặc giá trị bắt buộc.
+        </blockquote>
+        <h2>2. Chuẩn bị server trước khi cấu hình</h2>
+        <p>Trước khi chạy lệnh setup, nên chuẩn bị:</p>
+        <ul>
+          <li>
+            Các category/channel cần dùng: thông tin chung, tuyển dụng, xét
+            duyệt hồ sơ, phỏng vấn, thi tuyển, Duty, MDT, nhật ký/audit và thông
+            báo.
+          </li>
+          <li>
+            Các role tương ứng với luồng hoạt động: Citizen, ứng viên/chờ phỏng
+            vấn (nếu server dùng), nhân sự thuộc các lực lượng, các cấp bậc và
+            Ban Chỉ huy.
+          </li>
+          <li>
+            Quyền cho bot: xem channel, gửi tin nhắn, nhúng liên kết, đọc lịch
+            sử tin nhắn, quản lý tin nhắn nếu cần sửa bảng/panel, và các quyền
+            quản lý role/nickname nếu tính năng tương ứng cần dùng.
+          </li>
+          <li>
+            Nếu dùng Portal, Rules hoặc đồng bộ Google Sheets, chuẩn bị URL và
+            quyền truy cập cần thiết.
+          </li>
+          <li>
+            Đảm bảo role của bot được đặt cao hơn những role mà bot cần quản lý
+            trong **Server Settings → Roles**. Discord không cho bot quản lý
+            role cao hơn hoặc bằng role cao nhất của bot.
+          </li>
+        </ul>
+        <h2>3. Quy trình setup server mới</h2>
+        <p>
+          Nên thực hiện theo thứ tự dưới đây. Sau mỗi bước, dùng lệnh kiểm tra
+          để xác nhận cấu hình đã được lưu.
+        </p>
+        <h3>Bước 1 — Cấu hình channel và role</h3>
+        <ol>
+          <li>
+            Chạy `/setup channels` để cấu hình các channel của hệ thống UPD.
+          </li>
+          <li>Chạy `/setup role` để cấu hình các role dùng trong hệ thống.</li>
+          <li>Chạy `/setup portal` để thiết lập Portal URL.</li>
+          <li>Chạy `/setup rules` để thiết lập Rules URL.</li>
+          <li>Chạy `/setup status` để xem lại cấu hình server.</li>
+        </ol>
+        <p>
+          <strong>Kiểm tra:</strong> Chọn đúng channel/role trong các trường của
+          slash command. Nếu bot báo thiếu quyền hoặc không tìm thấy
+          role/channel, kiểm tra quyền bot và cấu hình đã chọn.
+        </p>
+        <h3>Bước 2 — Cấu hình rank mapping</h3>
+        <ol>
+          <li>
+            Chạy `/setup rank add` để thêm hoặc cập nhật mapping giữa role
+            Discord và cấp bậc UPD.
+          </li>
+          <li>Lặp lại cho các cấp bậc cần sử dụng.</li>
+          <li>Chạy `/setup rank list` để kiểm tra danh sách mapping.</li>
+          <li>Chạy `/setup rank remove` chỉ khi cần xóa mapping sai.</li>
+        </ol>
+        <p>
+          Mapping cần nhất quán với tên role, nhóm cấp bậc và thứ tự hiển thị mà
+          server sử dụng. Không thêm cùng một role cho nhiều cấp bậc nếu logic
+          bot không hỗ trợ trường hợp đó.
+        </p>
+        <h3>Bước 3 — Cấu hình Callsign</h3>
+        <ol>
+          <li>Chạy `/setup callsign` để cấu hình hệ thống Callsign.</li>
+          <li>Kiểm tra cấu hình theo hướng dẫn hiển thị trong Discord.</li>
+          <li>
+            Sau khi đã có role và rank mapping phù hợp, thử `/callsign set` bằng
+            một tài khoản kiểm thử.
+          </li>
+          <li>
+            Dùng `/callsign get` và `/danhsach_callsign` để kiểm tra kết quả.
+          </li>
+          <li>
+            Chỉ người có quyền phù hợp mới nên sử dụng `/callsign revoke` hoặc
+            `/callsign delete`.
+          </li>
+        </ol>
+        <p>
+          Các lệnh Callsign có thể ảnh hưởng nickname và dữ liệu đăng ký của
+          nhân sự. Nên thử trên tài khoản kiểm thử trước khi vận hành chính
+          thức.
+        </p>
+        <h3>Bước 4 — Cấu hình tuyển dụng</h3>
+        <ol>
+          <li>
+            Chạy `/recruitment setup` để cấu hình các channel xét duyệt, audit,
+            phỏng vấn và role Ban Chỉ huy theo các trường mà lệnh yêu cầu.
+          </li>
+          <li>
+            Chạy `/recruitment question-add` để thêm câu hỏi vào biểu mẫu.
+          </li>
+          <li>
+            Chạy `/recruitment question-list` để xem lại câu hỏi đã cấu hình.
+          </li>
+          <li>
+            Chạy `/recruitment question-remove` nếu cần xóa câu hỏi theo vị trí.
+          </li>
+          <li>
+            Chạy `/recruitment panel` để đăng panel tuyển dụng vào channel phù
+            hợp.
+          </li>
+          <li>Khi đã kiểm thử xong, chạy `/open_recruit` để mở nhận đơn.</li>
+          <li>Khi cần dừng nhận đơn, chạy `/close_recruit`.</li>
+        </ol>
+        <p>
+          <strong>Khuyến nghị:</strong> Hoàn thiện cấu hình role và channel
+          trước khi đăng panel. Kiểm thử bằng tài khoản Citizen để xác nhận đúng
+          điều kiện nộp đơn và các thông báo trạng thái như đang chờ phỏng vấn
+          hoặc đã là thành viên, nếu các điều kiện này được bật trong phiên bản
+          bot đang chạy.
+        </p>
+        <h3>Bước 5 — Cấu hình thi tuyển</h3>
+        <ol>
+          <li>
+            Chạy `/setup_exam_category set` để chọn Category chứa các kênh thi.
+          </li>
+          <li>
+            Chạy `/setup_exam_category view` để xác nhận Category đã chọn.
+          </li>
+          <li>
+            Chạy `/setup_exam_mdt_requirement set` để đặt số hồ sơ MDT yêu cầu
+            cho cấp bậc.
+          </li>
+          <li>
+            Chạy `/setup_exam_mdt_requirement list` để kiểm tra điều kiện MDT.
+          </li>
+          <li>Chạy `/setup_exam_questions add` để thêm câu hỏi cho cấp bậc.</li>
+          <li>Chạy `/setup_exam_questions list` để kiểm tra câu hỏi.</li>
+          <li>
+            Chạy `/setup_exam_questions remove` để xóa câu hỏi theo mã khi cần.
+          </li>
+        </ol>
+        <p>
+          Sau khi cấu hình, kiểm tra quy trình đăng ký thi. Dùng
+          <code>/exam publish</code> để đăng bảng đăng ký thi trong channel hiện
+          tại. Thí sinh có thể dùng <code>/exam status</code> để xem trạng thái
+          kỳ thi của mình.
+        </p>
+        <h3>Bước 6 — Kiểm thử và đưa server vào hoạt động</h3>
+        <ul>
+          <li>`/ping`: kiểm tra bot có phản hồi.</li>
+          <li>`/setup status`: rà soát cấu hình server.</li>
+          <li>`/testwelcome`: thử welcome bằng tài khoản đang chạy lệnh.</li>
+          <li>`/testgoodbye`: thử goodbye bằng tài khoản đang chạy lệnh.</li>
+          <li>`/personnel`: kiểm tra Personnel Board.</li>
+          <li>
+            `/callsign set`, `/callsign get`: kiểm tra luồng Callsign với tài
+            khoản thử nghiệm.
+          </li>
+          <li>Kiểm tra panel tuyển dụng, nộp đơn, xét duyệt và luồng thi.</li>
+          <li>
+            Nếu sử dụng Google Sheets, kiểm tra `/sync-kpi` sau khi đã cấu hình
+            quyền và nguồn dữ liệu.
+          </li>
+        </ul>
+        <p>---</p>
+        <h2>4. Danh sách lệnh theo nhóm</h2>
+        <h3>4.1. Cấu hình server</h3>
+        <table>
+          <tr>
+            <th>Lệnh</th>
+            <th>Chức năng</th>
+          </tr>
+          <tr>
+            <td>`/setup channels`</td>
+            <td>Cấu hình các channel của hệ thống UPD</td>
+          </tr>
+          <tr>
+            <td>`/setup role`</td>
+            <td>Cấu hình các role cho hệ thống UPD</td>
+          </tr>
+          <tr>
+            <td>`/setup portal`</td>
+            <td>Thiết lập Portal URL</td>
+          </tr>
+          <tr>
+            <td>`/setup rules`</td>
+            <td>Thiết lập Rules URL</td>
+          </tr>
+          <tr>
+            <td>`/setup status`</td>
+            <td>Xem cấu hình server</td>
+          </tr>
+          <tr>
+            <td>`/setup rank add`</td>
+            <td>Thêm hoặc cập nhật rank mapping</td>
+          </tr>
+          <tr>
+            <td>`/setup rank list`</td>
+            <td>Xem danh sách rank mapping</td>
+          </tr>
+          <tr>
+            <td>`/setup rank remove`</td>
+            <td>Xóa rank mapping theo role</td>
+          </tr>
+          <tr>
+            <td>`/setup callsign`</td>
+            <td>Cấu hình hệ thống Callsign</td>
+          </tr>
+        </table>
+        <h3>4.2. Callsign và nhân sự</h3>
+        <table>
+          <tr>
+            <th>Lệnh</th>
+            <th>Chức năng</th>
+          </tr>
+          <tr>
+            <td>`/callsign set`</td>
+            <td>Đăng ký Callsign cho chính mình</td>
+          </tr>
+          <tr>
+            <td>`/callsign get`</td>
+            <td>Xem Callsign của bản thân</td>
+          </tr>
+          <tr>
+            <td>`/callsign revoke`</td>
+            <td>Thu hồi Callsign của một nhân sự</td>
+          </tr>
+          <tr>
+            <td>`/callsign delete`</td>
+            <td>Cưỡng chế thu hồi một Callsign</td>
+          </tr>
+          <tr>
+            <td>`/danhsach_callsign`</td>
+            <td>Xem danh sách Callsign đang được sử dụng</td>
+          </tr>
+          <tr>
+            <td>`/personnel`</td>
+            <td>Hiển thị Personnel Board hiện tại</td>
+          </tr>
+          <tr>
+            <td>`/rankup`</td>
+            <td>Thay đổi chức vụ nhân sự UPD</td>
+          </tr>
+        </table>
+        <p>
+          <strong>Phân biệt:</strong> <code>/callsign revoke</code> được mô tả
+          là thu hồi Callsign của nhân sự; <code>/callsign delete</code> được mô
+          tả là cưỡng chế thu hồi một Callsign. Hãy xem quyền và trường nhập
+          trong Discord trước khi thực hiện.
+        </p>
+        <h3>4.3. Tuyển dụng</h3>
+        <table>
+          <tr>
+            <th>Lệnh</th>
+            <th>Chức năng</th>
+          </tr>
+          <tr>
+            <td>`/recruitment setup`</td>
+            <td>
+              Cấu hình channel xét duyệt, audit, phỏng vấn và role Ban Chỉ huy
+            </td>
+          </tr>
+          <tr>
+            <td>`/recruitment panel`</td>
+            <td>Đăng panel tuyển dụng vào channel</td>
+          </tr>
+          <tr>
+            <td>`/recruitment question-add`</td>
+            <td>Thêm câu hỏi vào biểu mẫu</td>
+          </tr>
+          <tr>
+            <td>`/recruitment question-list`</td>
+            <td>Xem câu hỏi tuyển dụng đã cấu hình</td>
+          </tr>
+          <tr>
+            <td>`/recruitment question-remove`</td>
+            <td>Xóa câu hỏi theo vị trí</td>
+          </tr>
+          <tr>
+            <td>`/open_recruit`</td>
+            <td>Mở đợt tuyển dụng, cho phép ứng viên nộp đơn</td>
+          </tr>
+          <tr>
+            <td>`/close_recruit`</td>
+            <td>Đóng đợt tuyển dụng, tạm ngừng nhận đơn</td>
+          </tr>
+        </table>
+        <h3>4.4. Thi tuyển và điều kiện thăng cấp</h3>
+        <table>
+          <tr>
+            <th>Lệnh</th>
+            <th>Chức năng</th>
+          </tr>
+          <tr>
+            <td>`/exam status`</td>
+            <td>Xem trạng thái kỳ thi của bạn</td>
+          </tr>
+          <tr>
+            <td>`/exam publish`</td>
+            <td>Đăng bảng đăng ký thi trong channel hiện tại</td>
+          </tr>
+          <tr>
+            <td>`/exam delete`</td>
+            <td>Xóa hồ sơ thí sinh đang kẹt</td>
+          </tr>
+          <tr>
+            <td>`/exam override`</td>
+            <td>Ép trạng thái kỳ thi khi nút bị lỗi</td>
+          </tr>
+          <tr>
+            <td>`/exam reset_cooldown`</td>
+            <td>Xóa thời gian chờ thi lại của thí sinh</td>
+          </tr>
+          <tr>
+            <td>`/setup_exam_category set`</td>
+            <td>Chọn Category để chứa các kênh thi</td>
+          </tr>
+          <tr>
+            <td>`/setup_exam_category view`</td>
+            <td>Xem Category thi hiện đang cấu hình</td>
+          </tr>
+          <tr>
+            <td>`/setup_exam_mdt_requirement set`</td>
+            <td>Đặt số hồ sơ MDT yêu cầu cho một cấp bậc</td>
+          </tr>
+          <tr>
+            <td>`/setup_exam_mdt_requirement list`</td>
+            <td>Xem điều kiện MDT của các cấp bậc</td>
+          </tr>
+          <tr>
+            <td>`/setup_exam_questions add`</td>
+            <td>Thêm câu hỏi cho một cấp bậc</td>
+          </tr>
+          <tr>
+            <td>`/setup_exam_questions list`</td>
+            <td>Xem câu hỏi của một cấp bậc</td>
+          </tr>
+          <tr>
+            <td>`/setup_exam_questions remove`</td>
+            <td>Xóa câu hỏi theo mã</td>
+          </tr>
+        </table>
+        <p>
+          <strong>Cảnh báo:</strong> <code>/exam delete</code>,
+          <code>/exam override</code> và <code>/exam reset_cooldown</code> có
+          thể tác động đến trạng thái hồ sơ hoặc kỳ thi. Chỉ người được phân
+          quyền mới nên dùng; kiểm tra đối tượng và thông tin trước khi xác
+          nhận.
+        </p>
+        <h3>4.5. MDT, Duty, KPI và thống kê</h3>
+        <table>
+          <tr>
+            <th>Lệnh</th>
+            <th>Chức năng</th>
+          </tr>
+          <tr>
+            <td>`/mdt`</td>
+            <td>Lập hồ sơ vụ án MDT</td>
+          </tr>
+          <tr>
+            <td>`/mdt_xoa`</td>
+            <td>Xóa hồ sơ vụ án MDT lập sai</td>
+          </tr>
+          <tr>
+            <td>`/cong_thoigian`</td>
+            <td>Cộng thêm thời gian on-duty cho sĩ quan</td>
+          </tr>
+          <tr>
+            <td>`/phat_thoigian`</td>
+            <td>Trừ thời gian on-duty của sĩ quan vi phạm</td>
+          </tr>
+          <tr>
+            <td>`/thongke_duty`</td>
+            <td>Thống kê tổng thời gian trực của từng sĩ quan</td>
+          </tr>
+          <tr>
+            <td>`/thongke_mdt`</td>
+            <td>Thống kê số hồ sơ MDT và tổng tiền phạt của từng giai đoạn</td>
+          </tr>
+          <tr>
+            <td>`/themvu_anmoi`</td>
+            <td>Thêm hoặc cập nhật loại vụ án và hệ số KPI</td>
+          </tr>
+          <tr>
+            <td>`/logduty`</td>
+            <td>Đọc và kiểm tra ảnh Duty Log bằng PaddleOCR</td>
+          </tr>
+          <tr>
+            <td>`/sync-kpi`</td>
+            <td>Đồng bộ bảng nhân sự, Duty và MDT lên Google Sheets</td>
+          </tr>
+        </table>
+        <p>
+          <strong>Lưu ý:</strong> Kiểm tra khoảng thời gian, đối tượng và dữ
+          liệu trước khi cộng/trừ Duty hoặc xóa hồ sơ MDT. Với
+          <code>/logduty</code>, chất lượng ảnh đầu vào có thể ảnh hưởng kết quả
+          OCR; cần kiểm tra dữ liệu sau khi đọc.
+        </p>
+        <h3>4.6. Tiện ích</h3>
+        <table>
+          <tr>
+            <th>Lệnh</th>
+            <th>Chức năng</th>
+          </tr>
+          <tr>
+            <td>`/help`</td>
+            <td>Xem danh sách lệnh</td>
+          </tr>
+          <tr>
+            <td>`/ping`</td>
+            <td>Kiểm tra bot</td>
+          </tr>
+          <tr>
+            <td>`/server`</td>
+            <td>Xem thông tin server</td>
+          </tr>
+          <tr>
+            <td>`/testwelcome`</td>
+            <td>Test welcome bằng tài khoản của bạn</td>
+          </tr>
+          <tr>
+            <td>`/testgoodbye`</td>
+            <td>Test goodbye bằng tài khoản của bạn</td>
+          </tr>
+        </table>
+        <p>---</p>
+        <h2>5. Quy trình sử dụng thường ngày</h2>
+        <h3>Nhân sự mới</h3>
+        <ol>
+          <li>Tham gia Discord UPD và nhận role phù hợp.</li>
+          <li>Đọc Rules và thông tin Portal.</li>
+          <li>Đăng ký Callsign bằng `/callsign set` khi đủ điều kiện.</li>
+          <li>Dùng `/callsign get` để kiểm tra Callsign đã đăng ký.</li>
+          <li>
+            Thực hiện quy trình tuyển dụng/thi tuyển theo hướng dẫn của server.
+          </li>
+        </ol>
+        <h3>Quản lý tuyển dụng</h3>
+        <ol>
+          <li>
+            Kiểm tra cấu hình bằng `/recruitment setup` và `/recruitment
+            question-list`.
+          </li>
+          <li>Đảm bảo panel đã được đăng bằng `/recruitment panel`.</li>
+          <li>Mở nhận đơn bằng `/open_recruit`.</li>
+          <li>Theo dõi hồ sơ theo quy trình nội bộ của server.</li>
+          <li>Đóng nhận đơn bằng `/close_recruit` khi kết thúc đợt tuyển.</li>
+        </ol>
+        <h3>Quản lý nhân sự</h3>
+        <ol>
+          <li>Kiểm tra rank mapping bằng `/setup rank list`.</li>
+          <li>Cập nhật chức vụ bằng `/rankup` theo đúng thẩm quyền.</li>
+          <li>Kiểm tra Personnel Board bằng `/personnel`.</li>
+          <li>Kiểm tra Callsign bằng `/danhsach_callsign`.</li>
+          <li>
+            Đồng bộ dữ liệu bằng `/sync-kpi` nếu server đã cấu hình Google
+            Sheets.
+          </li>
+        </ol>
+        <h3>Quản lý thi tuyển</h3>
+        <ol>
+          <li>Kiểm tra Category và cấu hình điều kiện/câu hỏi thi.</li>
+          <li>Dùng `/exam publish` tại channel cần đăng bảng đăng ký.</li>
+          <li>Thí sinh kiểm tra bằng `/exam status`.</li>
+          <li>
+            Chỉ dùng các lệnh xử lý ngoại lệ như `/exam override`, `/exam
+            delete`, `/exam reset_cooldown` khi thực sự cần thiết.
+          </li>
+        </ol>
+        <p>---</p>
+        <h2>6. Khắc phục sự cố thường gặp</h2>
+        <table>
+          <tr>
+            <th>Hiện tượng</th>
+            <th>Việc cần kiểm tra</th>
+          </tr>
+          <tr>
+            <td>Bot không phản hồi</td>
+            <td>
+              Chạy `/ping`; kiểm tra bot online và quyền xem/gửi tin nhắn trong
+              channel
+            </td>
+          </tr>
+          <tr>
+            <td>Không chọn được role/channel</td>
+            <td>Kiểm tra bot có quyền xem channel và role có tồn tại</td>
+          </tr>
+          <tr>
+            <td>Bot không gán được role</td>
+            <td>
+              Kiểm tra quyền Manage Roles và thứ tự role của bot trong Discord
+            </td>
+          </tr>
+          <tr>
+            <td>Bot không đổi được nickname</td>
+            <td>
+              Kiểm tra quyền Manage Nicknames, thứ tự role và giới hạn đối với
+              server owner
+            </td>
+          </tr>
+          <tr>
+            <td>Không thấy panel hoặc bảng thi</td>
+            <td>
+              Kiểm tra channel đích, quyền gửi tin nhắn và chạy lại lệnh đăng
+              panel/bảng khi phù hợp
+            </td>
+          </tr>
+          <tr>
+            <td>Personnel Board không cập nhật</td>
+            <td>
+              Kiểm tra cấu hình channel nhân sự, quyền sửa tin nhắn và log bot
+            </td>
+          </tr>
+          <tr>
+            <td>Đồng bộ KPI thất bại</td>
+            <td>Kiểm tra cấu hình Google Sheets, quyền truy cập và log bot</td>
+          </tr>
+          <tr>
+            <td>Câu hỏi tuyển dụng/thi không hiển thị đúng</td>
+            <td>
+              Kiểm tra danh sách câu hỏi, cấu hình cấp bậc và các trường nhập
+              trong slash command
+            </td>
+          </tr>
+        </table>
+        <p>
+          Nếu sự cố vẫn còn, ghi lại nội dung lỗi đầy đủ từ Discord hoặc log
+          bot, thời điểm xảy ra và command vừa chạy. Không gửi token bot, mật
+          khẩu hoặc thông tin bí mật vào kênh công khai.
+        </p>
+        <!-- <p>---</p> -->
+        <!-- <h2>7. Checklist bàn giao server</h2>
+        <p class="check">☐ Đã cấu hình channel và role.</p>
+        <p class="check">☐ Đã thiết lập Portal URL và Rules URL.</p>
+        <p class="check">☐ Đã cấu hình và kiểm tra rank mapping.</p>
+        <p class="check">☐ Đã cấu hình Callsign và kiểm thử đăng ký/thu hồi.</p>
+        <p class="check">☐ Đã cấu hình tuyển dụng, câu hỏi và panel.</p>
+        <p class="check">☐ Đã kiểm thử mở/đóng nhận đơn.</p>
+        <p class="check">
+          ☐ Đã cấu hình Category thi, điều kiện MDT và câu hỏi thi.
+        </p>
+        <p class="check">
+          ☐ Đã kiểm thử bảng đăng ký thi và trạng thái kỳ thi.
+        </p>
+        <p class="check">☐ Đã kiểm tra Personnel Board.</p>
+        <p class="check">☐ Đã kiểm tra MDT, Duty và thống kê.</p>
+        <p class="check">☐ Đã kiểm tra đồng bộ KPI nếu sử dụng.</p>
+        <p class="check">
+          ☐ Đã xác nhận quyền bot và quyền sử dụng lệnh của từng nhóm nhân sự.
+        </p> -->
+        <!-- <h2>8. Quy ước vận hành an toàn</h2>
+        <ol>
+          <li>Chỉ cấp quyền sử dụng lệnh quản trị cho người có trách nhiệm.</li>
+          <li>
+            Không dùng lệnh xóa, override, cộng/trừ Duty hoặc thu hồi Callsign
+            khi chưa xác minh đối tượng.
+          </li>
+          <li>Kiểm tra kết quả sau khi thực hiện thay đổi dữ liệu.</li>
+          <li>
+            Sao lưu dữ liệu bot/SQLite theo quy trình quản trị trước các thay
+            đổi lớn.
+          </li>
+          <li>
+            Khi cập nhật bot, kiểm thử trên môi trường thử nghiệm nếu có và xác
+            nhận slash command đã được đăng ký lại.
+          </li>
+          <li>
+            Tài liệu này cần được cập nhật khi có lệnh mới hoặc thay đổi
+            logic/option của bot.
+          </li>
+        </ol> -->
+        <p>---</p>
+        <p><strong>Phiên bản tài liệu:</strong> 1.0</p>
+        <p>
+          <strong>Đối tượng:</strong> Quản trị viên, Ban Chỉ huy và nhân sự vận
+          hành hệ thống UPD
+        </p>
+        <p>
+          <strong>Nguồn:</strong> Danh sách command hiển thị trong Discord do
+          quản trị viên cung cấp.
+        </p>
+      </article>
+    </main>
+    <footer>UPD Bot Documentation · Phiên bản 1.0</footer>
+  </body>
+</html>
